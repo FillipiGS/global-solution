@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container my-2">
-    <a th:href="@{/doadores/nova}" class="btn btn-primary btn-sm mb-3">Incluir Doador</a>
+    <a th:href="@{/doadores/cadastro}" class="btn btn-primary btn-sm mb-3">Incluir Doador</a>
     <h1>Doadores</h1>
     <table class="table table-striped table-responsive-md">
         <thead>
@@ -31,6 +31,7 @@
             <td th:text="${doador.bairro}"></td>
             <td th:text="${doador.cidade}"></td>
             <td th:text="${doador.estado}"></td>
+            <td th:text="${doador.cep}"></td>
             <td>
                 <a th:href="@{/doadores/{id}(id=${doador.id})}" class="btn btn-primary">Alterar</a>
                 <a th:href="@{/doadores/excluir/{id}(id=${doador.id})}" class="btn btn-danger">Excluir</a>

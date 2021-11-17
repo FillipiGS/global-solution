@@ -28,6 +28,7 @@ public class DoadorInicialBanco implements CommandLineRunner {
         doador1.setBairro("Vila Leopoldina");
         doador1.setCidade("São Paulo");
         doador1.setEstado("SP");
+        doador1.setCep("05316-900");
 
         Doador doador2 = new Doador("Instituto Alimento para todos");
         doador2.setNome("Instituto Alimento para todos");
@@ -39,6 +40,7 @@ public class DoadorInicialBanco implements CommandLineRunner {
         doador2.setBairro("Santa Helena");
         doador2.setCidade("São José dos Campos");
         doador2.setEstado("SP");
+        doador2.setCep("12225-885");
 
         doadorRepository.save(doador1);
         doadorRepository.save(doador2);

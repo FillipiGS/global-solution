@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.math.BigInteger;
 import java.util.Objects;
 
 @Entity (name = "tb_doador")
@@ -38,6 +39,8 @@ public class Doador {
     private String cidade;
 
     private String estado;
+
+    private String cep;
 
     public Doador(String nome) {
     }
