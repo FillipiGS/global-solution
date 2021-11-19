@@ -19,17 +19,17 @@
 
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">FGH</a>
+        <a class="navbar-brand" href="#">FHG Tech</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(atual)</span></a>
+                    <a class="nav-link" th:href="@{/home/}">Home <span class="sr-only">(atual)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/doadores/cadastro}">Cadastro</a>
+                    <a class="nav-link" href="#">Cadastro</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Perfil</a>
@@ -59,7 +59,7 @@
                 <div class="row">
                     <!-- Nome -->
                     <div class="col-md-6 mb-3">
-                        <label for="nome">Nome ou Instituição</label>
+                        <label for="nome">Instituição</label>
                         <input id="nome" placeholder="Instituto ou Nome pessoa física" value="" required="" type="text" th:field="*{instituicao}" class="form-control">
                         <div class="invalid-feedback">
                             É obrigatório inserir um nome válido.
@@ -68,7 +68,7 @@
 
                     <!-- Documento -->
                     <div class="col-md-6 mb-3">
-                        <label for="documento">CPF ou CNPJ</label>
+                        <label for="documento">CNPJ</label>
                         <input id="documento" placeholder="Sem pontos ou traços" value="" required="" type="text" th:field="*{cnpj}" class="form-control">
                         <div class="invalid-feedback">
                             É obrigatório inserir um documento válido.
@@ -82,7 +82,7 @@
                     <input type="email" id="email" th:field="*{email}" placeholder="email@exemplo.com" class="form-control">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="receber-email">
-                        <label class="custom-control-label" for="receber-email">Desejo receber em meu email as solicitações de doação.</label>
+                        <label class="custom-control-label" for="receber-email">Desejo receber em meu email as solicitações aceitas de doações.</label>
                     </div>
                     <div class="invalid-feedback">
                         Por favor, insira um endereço de e-mail válido.

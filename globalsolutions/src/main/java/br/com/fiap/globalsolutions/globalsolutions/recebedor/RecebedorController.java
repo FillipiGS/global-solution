@@ -1,6 +1,5 @@
 package br.com.fiap.globalsolutions.globalsolutions.recebedor;
 
-import br.com.fiap.globalsolutions.globalsolutions.solicitacao.Solicitacao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +21,7 @@ public class RecebedorController {
     @GetMapping("/recebedores")
     public String recebedores(Model model){
         model.addAttribute("listaRecebedores", recebedorRepository.findAll());
-        return "home/recebedores/index";
+        return "home/recebedores/perfil";
     }
 
     @GetMapping("/recebedores/cadastro")

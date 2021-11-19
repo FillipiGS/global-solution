@@ -1,36 +1,139 @@
-<!DOCTYPE html>
+<html lang="pt-br">
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <head>
-    <meta charset="UTF-8" />
-    <title>Cadastro de Doadores</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="../../../static/css/style.css">
+    <link rel="icon" href="../../../static/img/favicon.ico" type="image/x-icon">
 
+    <title>Home</title>
+
+    <!-- Principal CSS do Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <meta id="webpki_lacunasoftware_com">
 </head>
 <body>
 
-<div class="container my-2">
-    <h2>Editar</h2>
-    <form action="#" th:action="@{/solicitacoes/salvar}" th:object="${solicitacao}" method="POST">
-        <input type="hidden" id="id" th:field="*{id}">
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">FGH Tech</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(atual)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Perfil</a>
+                </li>
+            </ul>
+            <form class="form-inline mt-2 mt-md-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+            </form>
+        </div>
+    </nav>
+</header>
 
-        <input type="text" th:field="*{instituicao}" placeholder="Nome da Instituição" class="form-control mb-4 col-4">
+<main role="main" style="margin-top: 100px;">
 
-        <input type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4">
+    <div class="container light-style flex-grow-1 container-p-y">
 
-        <input type="text" th:field="*{telefone}" placeholder="Telefone" class="form-control mb-4 col-4">
+        <h4 class="font-weight-bold py-3 mb-4">
+            PERFIL
+        </h4>
 
-        <input type="text" th:field="*{endereco}" placeholder="Endereço" class="form-control mb-4 col-4">
+        <div class="card overflow-hidden">
+            <div class="row no-gutters row-bordered row-border-light">
+                <div class="col-md-3 pt-0">
+                    <div class="list-group list-group-flush account-settings-links">
+                        <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">Criar solicitação</a>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="tab-content">
+                        <div class="tab-pane fade active show" id="account-general">
 
-        <input type="text" th:field="*{cnpj}" placeholder="CNPJ" class="form-control mb-4 col-4">
+                            <hr class="border-light m-0">
 
-        <input type="text" th:field="*{alimento}" placeholder="Número" class="form-control mb-4 col-4">
+                            <div class="card-body">
+                                <h3>Criar uma solicitação:</h3>
+                                <form action="#" th:action="@{/solicitacoes/salvar}" th:object="${solicitacao}" method="POST">
+                                    <input type="hidden" id="id" th:field="*{id}">
 
-        <input type="text" th:field="*{descricao}" placeholder="Descrição" class="form-control mb-4 col-4">
+                                    <div class="form-group">
+                                        <label class="form-label">Instituição</label>
+                                        <input type="text" th:field="*{instituicao}" class="form-control mb-1" value="Amigos do Bem">
+                                    </div>
 
-        <button type="submit" class="btn btn-info col-2">Salvar</button>
-    </form>
-    <hr>
-    <a th:href="@{/solicitacoes}">Retornar para a lista de doadores</a>
-</div>
-</body>
-</html>
+                                    <div class="form-group">
+                                        <label class="form-label">CNPJ</label>
+                                        <input type="text" th:field="*{cnpj}" class="form-control mb-1" value="05.108.918/0001-72">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" th:field="*{email}" class="form-control mb-1" value="informacoes@amigosdobem.org">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Telefone</label>
+                                        <input type="text" th:field="*{telefone}" class="form-control mb-1" value="(11) 3019-0100">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">Endereço</label>
+                                        <input type="text" th:field="*{endereco}" class="form-control mb-1" value="Rua Dr. Gabriel de Resende, 122 - Vila Invernada, São Paulo - SP, 03350-005">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label" for="alimento">Tipo de alimento</label>
+                                        <select th:field="*{alimento}" class="custom-select d-block w-100" id="alimento" required="">
+                                            <option value="Perecíveis">Perecíveis</option>
+                                            <option value="Não Perecíveis">Não Perecíveis</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="textarea" class="form-label">Descrição</label>
+                                        <textarea id="textarea" th:field="*{descricao}" class="form-control mb-1" name="textarea" rows="4" cols="50"></textarea>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-info col-2">Enviar</button>
+                                </form>
+                            </div>
+
+                        </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer class="container">
+        <p class="float-right"><a href="#">Voltar ao topo</a></p>
+        <p>© FGH Tech., 2021-2022 · <a href="#">Privacidade</a> · <a href="#">Termos</a></p>
+    </footer>
+</main>
+
+<!-- Principal JavaScript do Bootstrap
+================================================== -->
+<!-- Foi colocado no final para a página carregar mais rápido -->
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+
+<!-- Só faz o nossos placeholders de imagens funcionarem. Não precisar copiar a próxima linha! -->
+<script src="../../assets/js/vendor/holder.min.js"></script>
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"></style></defs><text x="0" y="25" style="font-weight:bold;font-size:25pt;font-family:Arial, Helvetica, Open Sans, sans-serif">500x500</text></svg></body></html>

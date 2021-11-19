@@ -2,6 +2,8 @@ package br.com.fiap.globalsolutions.globalsolutions.utils;
 
 import br.com.fiap.globalsolutions.globalsolutions.doador.Doador;
 import br.com.fiap.globalsolutions.globalsolutions.doador.DoadorRepository;
+import br.com.fiap.globalsolutions.globalsolutions.pedido.Pedido;
+import br.com.fiap.globalsolutions.globalsolutions.pedido.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -14,6 +16,7 @@ public class DoadorInicialBanco implements CommandLineRunner {
 
     @Autowired
     private DoadorRepository doadorRepository;
+    private PedidoRepository pedidoRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -42,9 +45,11 @@ public class DoadorInicialBanco implements CommandLineRunner {
         doador2.setEstado("SP");
         doador2.setCep("12225-885");
 
+        Pedido pedido3 = new Pedido("Teste");
+        pedido3.setInstituicao("Teste");
+
         doadorRepository.save(doador1);
         doadorRepository.save(doador2);
-
 
     }
 }

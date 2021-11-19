@@ -20,10 +20,8 @@ public class SolicitacaoController {
 
     @GetMapping("/solicitacoes")
     public String solicitacoes(Model model) {
-
         model.addAttribute("listaSolicitacoes", solicitacaoRepository.findAll());
-        return "home/solicitacoes/index";
-
+        return "home/recebedores/perfil";
     }
 
     @GetMapping("/solicitacoes/cadastro")

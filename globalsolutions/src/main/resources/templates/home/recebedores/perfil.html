@@ -52,9 +52,10 @@
             <div class="row no-gutters row-bordered row-border-light">
                 <div class="col-md-3 pt-0">
                     <div class="list-group list-group-flush account-settings-links">
-                        <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">Criar solicitação</a>
-                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">Visualizar solicitações</a>
-                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-info">Informações do Pefil</a>
+                        <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">Geral</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-visualizar-solicitacoes">Visualizar Solicitações</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">Mudar senha</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-info">Informações do Perfil</a>
                         <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-social-links">Redes Sociais</a>
                         <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-connections">Conexões</a>
                         <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-notifications">Notificações</a>
@@ -67,65 +68,64 @@
                             <div class="card-body media align-items-center">
                                 <img src="https://bootdey.com/img/Content/avatar/avatar1.png" style="width: 200px; height: 200px" alt="" class="d-block ui-w-80">
                                 <div class="media-body ml-4">
+                                    <label class="btn btn-outline-primary">
+                                        Upload nova foto
+                                        <input type="file" class="account-settings-fileinput">
+                                    </label> &nbsp;
+                                    <button type="button" class="btn btn-default md-btn-flat">Reset</button>
 
-                                    <div class="card-body">
-                                        <h3>Criar uma solicitação:</h3>
-                                        <form action="#" th:action="@{/solicitacao/salvar}" th:object="${solicitacao}" method="POST">
-                                            <input type="hidden" id="id" th:field="*{id}">
-
-                                            <div class="form-group">
-                                                <label class="form-label">Instituição</label>
-                                                <input type="text" th:field="*{instituicao}" class="form-control mb-1">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="form-label">CNPJ</label>
-                                                <input type="email" th:field="*{cnpj}" class="form-control mb-1">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="form-label">Email</label>
-                                                <input type="email" th:field="*{email}" class="form-control mb-1">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="form-label">Telefone</label>
-                                                <input type="email" th:field="*{telefone}" class="form-control mb-1">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="form-label">Endereço</label>
-                                                <input type="email" th:field="*{endereco}" class="form-control mb-1">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="form-label">Tipo de alimento</label>
-                                                <input type="email" th:field="*{alimento}" class="form-control mb-1">
-                                                <select class="custom-select d-block w-100" id="estado" required="">
-                                                    <option value="">Escolha...</option>
-                                                    <option>Perecíveis</option>
-                                                    <option>Não Perecíveis</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="textarea" class="form-label">Descrição</label>
-                                                <textarea id="textarea" th:field="*{descricao}" class="form-control mb-1" name="textarea" rows="4" cols="50"></textarea>
-                                            </div>
-
-                                            <button type="submit" class="btn btn-info col-2">Salvar</button>
-                                        </form>
-                                    </div>
-
+                                    <div class="text-light small mt-1">Somente arquivos JPG, GIF ou PNG. Tamanho máximo de 800Kb</div>
                                 </div>
                             </div>
                             <hr class="border-light m-0">
 
                             <div class="card-body">
-                                <a th:href="@{/solicitacoes/}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Criar uma solicitação</a>
+                                <a th:href="@{/solicitacoes/cadastro}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Criar uma solicitação</a>
                             </div>
 
                         </div>
+                        <div class="tab-pane fade" id="account-visualizar-solicitacoes">
+                            <div class="card-body pb-2">
+                                <div class="card-body pb-2">
+                                        <a th:href="@{/solicitacoes/cadastro}" class="btn btn-primary btn-sm mb-3">Incluir Solicitação</a>
+                                        <h1>Lista de solicitações</h1>
+                                        <table class="table table-striped table-responsive-md">
+                                            <tr th:each="solicitacao : ${listaSolicitacoes}">
+                                                    <!-- Side info -->
+                                                    <div class="card mb-4">
+                                                        <hr class="border-light m-0">
+                                                        <div class="card-body">
+                                                            <p class="mb-2" th:text="${solicitacao.instituicao}">
+                                                                <i class="ion ion-md-desktop ui-w-30 text-center text-lighter"></i></p>
+                                                            <p class="mb-2" th:text="${solicitacao.endereco}">
+                                                                <i class="ion ion-ios-navigate ui-w-30 text-center text-lighter"></i></p>
+                                                            <p class="mb-2" th:text="${solicitacao.email}">
+                                                                <i class="ion ion-ios-navigate ui-w-30 text-center text-lighter"></i></p>
+                                                            <p class="mb-2" th:text="${solicitacao.telefone}">
+                                                                <i class="ion ion-ios-navigate ui-w-30 text-center text-lighter"></i></p>
+                                                            <p class="mb-2" th:text="${solicitacao.cnpj}">
+                                                                <i class="ion ion-ios-navigate ui-w-30 text-center text-lighter"></i></p>
+                                                        </div>
+                                                        <hr class="border-light m-0">
+                                                        <div class="card-body">
+                                                            <p class="mb-2" th:text="${solicitacao.alimento}">
+                                                                <i class="ion ion-ios-navigate ui-w-30 text-center text-lighter"></i></p>
+                                                            <p class="mb-2" th:text="${solicitacao.descricao}">
+                                                                <i class="ion ion-ios-navigate ui-w-30 text-center text-lighter"></i></p>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <a th:href="@{/solicitacoes/{id}(id=${solicitacao.id})}" class="btn btn-primary">Alterar</a>
+                                                            <a th:href="@{/solicitacoes/excluir/{id}(id=${solicitacao.id})}" class="btn btn-danger">Excluir</a>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- / Side info -->
+                                            </tr>
+                                        </table>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="tab-pane fade" id="account-change-password">
                             <div class="card-body pb-2">
 
@@ -150,6 +150,7 @@
 
                             </div>
                         </div>
+
                         <div class="tab-pane fade" id="account-info">
                             <div class="card-body pb-2">
 

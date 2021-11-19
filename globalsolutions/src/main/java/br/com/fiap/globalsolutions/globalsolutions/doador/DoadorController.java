@@ -1,5 +1,6 @@
 package br.com.fiap.globalsolutions.globalsolutions.doador;
 
+import br.com.fiap.globalsolutions.globalsolutions.solicitacao.SolicitacaoRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +18,8 @@ public class DoadorController {
 
     @GetMapping("/doadores")
     public String doadores(Model model) {
-
         model.addAttribute("listaDoadores", doadorRepository.findAll());
-        return "home/doadores/index";
-
+        return "home/doadores/perfil";
     }
 
     @GetMapping("/doadores/cadastro")
@@ -45,7 +44,7 @@ public class DoadorController {
     @PostMapping("/doadores/salvar")
     public String salvarDoador(@ModelAttribute("doador") Doador doador){
         doadorRepository.save(doador);
-        return "redirect:/doadores";
+        return "redirect:/pedidos";
     }
 
     @GetMapping("/doadores/excluir/{id}")

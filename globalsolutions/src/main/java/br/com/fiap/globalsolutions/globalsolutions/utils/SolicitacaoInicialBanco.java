@@ -32,7 +32,7 @@ public class SolicitacaoInicialBanco implements CommandLineRunner {
         solicitacao2.setInstituicao("Amigos do Bem");
         solicitacao2.setCnpj("05.108.918/0001-72");
         solicitacao2.setEmail("informacoes@amigosdobem.org");
-        solicitacao2.setTelefone("(11) 3019-0100 ");
+        solicitacao2.setTelefone("(11) 3019-0100");
         solicitacao2.setEndereco("Rua Dr. Gabriel de Resende, 122 - Vila Invernada, São Paulo - SP, 03350-005");
         solicitacao2.setAlimento("Não Perecíveis");
         solicitacao2.setDescricao("Estamos coletando alimentos como: Arroz, feijão e oléo. Para ajudar crianças de creches na periferia de SP");
