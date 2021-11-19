@@ -1,0 +1,221 @@
+<html lang="pt-br">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../static/img/favicon.ico" type="image/x-icon">
+
+    <title>Cadastro</title>
+
+    <!-- Principal CSS do Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <meta id="webpki_lacunasoftware_com">
+</head>
+
+<body class="bg-light">
+
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">FGH</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/doadores/}">Home <span class="sr-only">(atual)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Cadastro</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Perfil</a>
+                </li>
+            </ul>
+            <form class="form-inline mt-2 mt-md-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+            </form>
+        </div>
+    </nav>
+</header>
+
+<div class="container" style="margin-top: 80px;">
+    <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="http://www.auxvida.com.br/wp-content/uploads/2017/03/MEU-CADASTRO.png" alt="" width="72" height="72">
+        <h2>Formulário de Cadastro dos Doadores</h2>
+        <p class="lead">Aqui é onde você começa a ajudar as pessoas que mais precisam. Se você é um doador ou uma instituição recebedorá, realize seu cadastro para que possa começar a mudar a vida de milhares de pessoas!</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Dados da instituição ou pessoa física doadora</h4>
+            <form class="needs-validation" novalidate="" action="#" th:action="@{/doadores/salvar}" th:object="${doador}" method="POST">
+                <input type="hidden" id="id" th:field="*{id}">
+                <div class="row">
+                    <!-- Nome -->
+                    <div class="col-md-6 mb-3">
+                        <label for="nome">Nome ou Instituição</label>
+                        <input id="nome" placeholder="Instituto ou Nome pessoa física" value="" required="" type="text" th:field="*{nome}" class="form-control">
+                        <div class="invalid-feedback">
+                            É obrigatório inserir um nome válido.
+                        </div>
+                    </div>
+
+                    <!-- Documento -->
+                    <div class="col-md-6 mb-3">
+                        <label for="documento">CPF ou CNPJ</label>
+                        <input id="documento" placeholder="Sem pontos ou traços" value="" required="" type="text" th:field="*{documento}" class="form-control">
+                        <div class="invalid-feedback">
+                            É obrigatório inserir um documento válido.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" th:field="*{email}" placeholder="email@exemplo.com" class="form-control">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="receber-email">
+                        <label class="custom-control-label" for="receber-email">Desejo receber em meu email as solicitações de doação.</label>
+                    </div>
+                    <div class="invalid-feedback">
+                        Por favor, insira um endereço de e-mail válido.
+                    </div>
+                </div>
+
+
+                <!-- Telefone -->
+                <div class="mb-3">
+                    <label for="telefone">Telefone</label>
+                    <input type="text" id="telefone" th:field="*{telefone}" placeholder="(00) 01234-5789" class="form-control col-4">
+                    <div class="invalid-feedback">
+                        Por favor, insira número de telefone/celular válido.
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Cidade -->
+                    <div class="col-md-6 mb-3">
+                        <label for="endereco">Endereço</label>
+                        <input id="endereco" type="text" th:field="*{endereco}" placeholder="Rua Mooca / Av. Paulista" class="form-control" required="">
+                        <div class="invalid-feedback">
+                            Por favor, insira seu endereço.
+                        </div>
+                    </div>
+
+                    <!-- Nº -->
+                    <div class="col-md-6 mb-3">
+                        <label for="numero">Nº</label>
+                        <input id="numero" type="text" th:field="*{numero}" placeholder="1050" class="form-control col-3">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5 mb-3">
+                        <!-- Cidade -->
+                        <label for="cidade">Cidade</label>
+                        <input id="cidade" type="text" th:field="*{cidade}" placeholder="" class="form-control" required="">
+                        <div class="invalid-feedback">
+                            Por favor, insira sua cidade endereço.
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="estado">Estado</label>
+                        <select class="custom-select d-block w-100" id="estado" required="">
+                            <option value="">Escolha...</option>
+                            <option>AC</option>
+                            <option>AL</option>
+                            <option>AP</option>
+                            <option>AM</option>
+                            <option>BA</option>
+                            <option>CE</option>
+                            <option>DF</option>
+                            <option>ES</option>
+                            <option>GO</option>
+                            <option>MA</option>
+                            <option>MT</option>
+                            <option>MS</option>
+                            <option>MG</option>
+                            <option>PA</option>
+                            <option>PB</option>
+                            <option>PR</option>
+                            <option>PE</option>
+                            <option>PI</option>
+                            <option>RJ</option>
+                            <option>RN</option>
+                            <option>RS</option>
+                            <option>RO</option>
+                            <option>RR</option>
+                            <option>SC</option>
+                            <option>SP</option>
+                            <option>SE</option>
+                            <option>TO</option>
+
+                        </select>
+                        <div class="invalid-feedback">
+                            Por favor, insira um estado válido.
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="cep">CEP</label>
+                        <input type="text" class="form-control" id="cep" placeholder="" required="">
+                        <div class="invalid-feedback">
+                            É obrigatório inserir um CEP.
+                        </div>
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">© 2021 -2022 FGH Tech</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacidade</a></li>
+            <li class="list-inline-item"><a href="#">Termos</a></li>
+            <li class="list-inline-item"><a href="#">Suporte</a></li>
+        </ul>
+    </footer>
+</div>
+
+<!-- Principal JavaScript do Bootstrap
+================================================== -->
+<!-- Foi colocado no final para a página carregar mais rápido -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="../../assets/js/vendor/holder.min.js"></script>
+<script>
+    // Exemplo de JavaScript para desativar o envio do formulário, se tiver algum campo inválido.
+    (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+            // Selecione todos os campos que nós queremos aplicar estilos Bootstrap de validação customizados.
+            var forms = document.getElementsByClassName('needs-validation');
+
+            // Faz um loop neles e previne envio
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+
+</body></html>

@@ -19,13 +19,13 @@ public class DoadorController {
     public String doadores(Model model) {
 
         model.addAttribute("listaDoadores", doadorRepository.findAll());
-        return "/doadores/index";
+        return "home/doadores/index";
 
     }
 
     @GetMapping("/doadores/cadastro")
     public String novoDoador(@ModelAttribute("doador") Doador doador) {
-        return "/doadores/form";
+        return "home/doadores/form";
     }
 
     @GetMapping("/doadores/{id}")
@@ -38,7 +38,7 @@ public class DoadorController {
         }
 
         model.addAttribute("doador", doadorOptional.get());
-        return "/doadores/form";
+        return "home/doadores/form";
 
     }
 

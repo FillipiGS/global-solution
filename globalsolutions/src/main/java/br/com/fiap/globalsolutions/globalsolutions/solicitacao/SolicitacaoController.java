@@ -22,13 +22,13 @@ public class SolicitacaoController {
     public String solicitacoes(Model model) {
 
         model.addAttribute("listaSolicitacoes", solicitacaoRepository.findAll());
-        return "doadores/solicitacoes/index";
+        return "home/solicitacoes/index";
 
     }
 
     @GetMapping("/solicitacoes/cadastro")
     public String novaSolicitacao(@ModelAttribute("solicitacao") Solicitacao solicitacao) {
-        return "doadores/solicitacoes/form";
+        return "home/solicitacoes/form";
     }
 
     @GetMapping("/solicitacoes/{id}")
@@ -41,7 +41,7 @@ public class SolicitacaoController {
         }
 
         model.addAttribute("solicitacao", solicitacaoOptional.get());
-        return "doadores/solicitacoes/form";
+        return "home/solicitacoes/form";
 
     }
 
