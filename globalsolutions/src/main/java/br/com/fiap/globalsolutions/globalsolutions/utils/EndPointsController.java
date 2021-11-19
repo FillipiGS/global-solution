@@ -18,4 +18,10 @@ public class EndPointsController {
         return "home/form";
     }
 
+    //LOGIN
+    @GetMapping("/login")
+    public String login(){
+        return "home/login";
+    }
+
 }

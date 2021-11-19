@@ -26,10 +26,16 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(atual)</span></a>
+                    <a class="nav-link" th:href="@{/home}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Perfil</a>
+                    <a class="nav-link" th:href="@{/cadastro}">Cadastro</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/perfil}"><span class="sr-only">(atual)</span>Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}">Login</a>
                 </li>
             </ul>
             <form class="form-inline mt-2 mt-md-0">
@@ -53,7 +59,7 @@
                 <div class="col-md-3 pt-0">
                     <div class="list-group list-group-flush account-settings-links">
                         <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">Geral</a>
-                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-visualizar-solicitacoes">Visualizar Comprovantes</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-visualizar-solicitacoes">Visualizar solicitações</a>
                         <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">Mudar senha</a>
                         <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-info">Informações do Perfil</a>
                         <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-social-links">Redes Sociais</a>
@@ -76,11 +82,6 @@
 
                                     <div class="text-light small mt-1">Somente arquivos JPG, GIF ou PNG. Tamanho máximo de 800Kb</div>
                                 </div>
-                            </div>
-                            <hr class="border-light m-0">
-
-                            <div class="card-body">
-                                <a th:href="@{/solicitacoes/cadastro}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Criar uma solicitação</a>
                             </div>
 
                         </div>
@@ -115,7 +116,7 @@
                                                         <i class="ion ion-ios-navigate ui-w-30 text-center text-lighter"></i></p>
                                                 </div>
                                                 <div class="card-body">
-                                                    <a th:href="@{/pedidos/excluir/{id}(id=${pedido.id})}" class="btn btn-success" data-toggle="modal" data-target="#modalExemplo">Aceitar</a>
+                                                    <a th:href="@{/pedidos/excluir/{id}(id=${pedido.id})}" class="btn btn-success">Aceitar</a>
                                                     <a th:href="@{/pedidos/excluir/{id}(id=${pedido.id})}" class="btn btn-danger">Excluir</a>
                                                 </div>
                                             </div>

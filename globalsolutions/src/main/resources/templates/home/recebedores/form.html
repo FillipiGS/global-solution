@@ -26,13 +26,16 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/home/}">Home <span class="sr-only">(atual)</span></a>
+                    <a class="nav-link" th:href="@{/home}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Cadastro</a>
+                    <a class="nav-link" th:href="@{/cadastro}"><span class="sr-only">(atual)</span>Cadastro</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled" href="#">Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}">Login</a>
                 </li>
             </ul>
             <form class="form-inline mt-2 mt-md-0">
@@ -60,7 +63,7 @@
                     <!-- Nome -->
                     <div class="col-md-6 mb-3">
                         <label for="nome">Instituição</label>
-                        <input id="nome" placeholder="Instituto ou Nome pessoa física" value="" required="" type="text" th:field="*{instituicao}" class="form-control">
+                        <input id="nome" placeholder="Instituição" value="" required="" type="text" th:field="*{instituicao}" class="form-control">
                         <div class="invalid-feedback">
                             É obrigatório inserir um nome válido.
                         </div>
@@ -217,6 +220,5 @@
         }, false);
     })();
 </script>
-
 
 </body></html>
